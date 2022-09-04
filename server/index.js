@@ -7,9 +7,15 @@ import postRoutes from './routes/posts.js';
 const app= express();
 app.use('/posts', postRoutes);
 
+const corsOptions ={
+    origin:'http://localhost:3000', 
+    credentials:true,            //access-control-allow-credentials:true
+    optionSuccessStatus:200
+}
+
 app.use(bodyParser.json({limit: "30mb", extended: true}));
 app.use(bodyParser.urlencoded({limit: "30mb", extended: true}));
-app.use(cors());
+app.use(cors(corsOptions));
 
 const CONNECTION_URL = 'mongodb+srv://aditya:aditya123@cluster0.s8e6v.mongodb.net/travel-book?retryWrites=true&w=majority';
 const PORT = process.env.PORT || 5000;
