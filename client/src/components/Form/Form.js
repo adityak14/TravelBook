@@ -9,7 +9,7 @@ import { createPost, updatePost } from '../../actions/action_posts';
 
 const Form = ({ currentId, setCurrentId }) => {
   const [postData, setPostData] = useState({ creator: '', title: '', message: '', tags: '', selectedFile: '' });
-  const post = useSelector((state) => (currentId ? state.posts.find((p) => p._id === currentId) : null));
+  const post = useSelector((state) => (currentId ? state.reducer_posts.find((p) => p._id === currentId) : null));
   const dispatch = useDispatch();
   const classes = useStyles();
 
@@ -24,15 +24,12 @@ const Form = ({ currentId, setCurrentId }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch(createPost(postData));
-
     if (currentId === 0) {
       dispatch(createPost(postData));
-      clear();
     } else {
       dispatch(updatePost(currentId, postData));
-      clear();
     }
+    clear();
   };
 
   return (

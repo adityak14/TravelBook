@@ -1,8 +1,7 @@
-import React, { Component, useState, useEffect }  from 'react';
-import logo from './logo.svg';
+import React, { useState, useEffect }  from 'react';
 import './App.css';
 import { getPosts } from './actions/action_posts'
-import { Container, AppBar, Typography, Grow, Grid } from '@material-ui/core';
+import { Container, AppBar, Grow, Grid } from '@material-ui/core';
 import Form from './components/Form/Form';
 import Posts from './components/Posts/Posts';
 import useStyles from './styles'
